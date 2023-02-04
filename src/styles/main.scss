@@ -1,0 +1,291 @@
+$font-stack: Georgia, serif;
+$primary-color: #FF6701;
+$secondary-color: #FEA82F;
+$var1-color: #FFC288;
+$var2-color: #FCECDD;
+
+$heading1: 3em;
+$heading2: 2.5em;
+$heading3: 2em;
+$heading4: 1.6em;
+$heading5: 1.2em;
+$heading6: 1em;
+
+@mixin flexdisplay( $flex: column ){
+  display: flex;
+  flex-direction: $flex;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  font-size: 16px;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+#to-main{
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 1;
+  padding: 8px;
+}
+
+#to-main:focus {
+  position: static;
+  top:0;
+}
+
+header {
+  @include flexdisplay( row );
+  align-items: center;
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba( 0, 0, 0, .4 );
+  button {
+    margin-left: auto;
+  }
+}
+
+.material-icons-outlined {
+  font-size: 2.2em;
+}
+
+#hamburger {
+  background-color: $var1-color;
+  border: none;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+#drawer {
+  @include flexdisplay( column );
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 1;
+  background-color: $primary-color;
+  width: 80%;
+  height: 100%;
+  transition: transform .5s ease-in-out; 
+  a {
+    color: white;
+    display: block;
+    padding: 16px 24px;
+    min-height: 44px;
+    text-decoration: none;
+  }
+  a:focus, a:hover {
+    text-decoration: underline;
+    background-color: $var2-color;
+    color: black;
+    outline:none;
+  }
+}
+
+#drawer.open {
+  transform: translate( -100%, 0 );
+}
+
+.hero {
+  width: 100%;
+  min-height: 380px;
+  background-color: green;
+  background-image: url("../public/images/heros/hero-image.jpg");
+  background-position: center;
+  background-size: cover;
+  transition: min-height .2s linear;
+  > .heroInner {
+    @include flexdisplay( column );
+    width: 100%;
+    min-height: 380px;
+    background-color: rgba( 0, 0, 0, .5 );
+    text-align: center;
+    justify-content: center;
+    gap: 5px;
+    transition: min-height .2s linear;
+    > .heroTitle {
+      color: $secondary-color;
+      font-size: $heading2;
+      transition: font-size .2s linear;
+    }
+    > .heroContent {
+      color: $var2-color;
+    }
+  }
+}
+
+main {
+  width: 100%;
+  padding: 16px;
+  scroll-margin-top: 95px;
+}
+
+#explore-restaurant {
+  width: 100%;
+  > .sectionTitle {
+    color: $primary-color;
+    font-size: $heading3;
+    text-align: center;
+    padding: 16px 0;
+  }
+  > .sectionTitle::after {
+    content: "";
+    display: block;
+    border-bottom: 1px solid $primary-color;
+    margin-top: 16px;
+  }
+  > .collection {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+.restaurantContainer {
+  width: 100%;
+  padding: 16px;
+  @include flexdisplay(column);
+  box-shadow: 0 5px 10px 0 rgba( 0, 0, 0, .4 );
+  border-radius: 5px;
+  > .restaurantImages {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    > img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+    > .city {
+      background-image: linear-gradient( to right, $primary-color, transparent );
+      padding: 8px 16px;
+      display: block;
+      width: 50%;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      position: absolute;
+      color: $var2-color;
+      top: 0;
+      left: 0;
+    }
+  }
+  > .restaurantContent {
+      > .restaurantName {
+        font-size: $heading4;
+        font-weight: 200;
+        margin-top: 16px;
+        border-bottom: 1px solid $var1-color;
+        padding: 4px;
+      }
+      > .restaurantRating {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 16px;
+        padding-left: 4px;
+      }
+      > .restaurantDescription {
+        margin-top: 16px;
+        line-height: 1.6;
+        padding: 4px;
+      }
+  }
+}
+
+.restaurantContainer:hover { 
+  border: 1px solid $primary-color;
+}
+
+footer {
+  width: 100%;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  > .footerText {
+    margin: auto;
+    color: $var2-color;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
+
+@media only screen and ( min-width: 712px ) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hero {
+    min-height: 480px;
+    > .heroInner {
+      min-height: 480px;
+    }
+  }
+}
+
+@media only screen and ( min-width: 1000px ) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: repeat( 3, 1fr );
+      width: 90%;
+      margin: auto;
+    }
+  }
+  .hero {
+    > .heroInner {
+      > .heroTitle {
+        font-size: $heading1;
+      }
+    }
+  }
+  #hamburger {
+    display: none;
+  }
+  #drawer {
+    @include flexdisplay(row);
+    position: static;
+    z-index: 0;
+    justify-content: flex-end;
+    background-color: inherit;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    > a {
+      border-right: 1px solid $var1-color;
+      color: $primary-color;
+    }
+    > a:last-child {
+      border-right: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: repeat( 4, 1fr );
+      width: 80%;
+    }
+  }
+  .hero {
+    min-width: 1000px;
+    min-height: 690px;
+    > .heroInner {
+      min-height: 690px;
+    }
+  }
+}
