@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -26,8 +25,8 @@ module.exports = {
             loader: 'css-loader',
           },
           {
-            loader: 'sass-loader'
-          }
+            loader: 'sass-loader',
+          },
         ],
       },
     ],
@@ -45,7 +44,6 @@ module.exports = {
         },
       ],
     }),
-    new FaviconsWebpackPlugin(path.resolve(__dirname, 'src/public/images/heros/Suka-Makan-Logo.png')),
     new CleanWebpackPlugin(),
   ],
 };

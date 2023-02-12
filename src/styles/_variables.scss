@@ -1,0 +1,17 @@
+$font-stack: Georgia, serif;
+$primary-color: #FF6701;
+$secondary-color: #FEA82F;
+$var1-color: #FFC288;
+$var2-color: #FCECDD;
+
+$heading1: 3em;
+$heading2: 2.5em;
+$heading3: 2em;
+$heading4: 1.6em;
+$heading5: 1.2em;
+$heading6: 1em;
+
+@mixin flexdisplay( $flex: column ){
+  display: flex;
+  flex-direction: $flex;
+}

@@ -1,0 +1,68 @@
+@use 'variables';
+
+@media only screen and ( min-width: 712px ) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .hero {
+    min-height: 480px;
+    > .heroInner {
+      min-height: 480px;
+    }
+  }
+}
+
+@media only screen and ( min-width: 1000px ) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: repeat( 3, 1fr );
+      width: 90%;
+      margin: auto;
+    }
+  }
+  .hero {
+    > .heroInner {
+      > .heroTitle {
+        font-size: variables.$heading1;
+      }
+    }
+  }
+  .app-bar__menu-button {
+    display: none;
+  }
+  .app-bar__navigations {
+    @include variables.flexdisplay(row);
+    position: static;
+    z-index: 0;
+    justify-content: flex-end;
+    background-color: inherit;
+    width: auto;
+    height: auto;
+    margin-left: auto;
+    > a {
+      border-right: 1px solid variables.$var1-color;
+      color: variables.$primary-color;
+    }
+    > a:last-child {
+      border-right: none;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #explore-restaurant {
+    > .collection {
+      grid-template-columns: repeat( 4, 1fr );
+      width: 80%;
+    }
+  }
+  .hero {
+    min-width: 1000px;
+    min-height: 690px;
+    > .heroInner {
+      min-height: 690px;
+    }
+  }
+}
