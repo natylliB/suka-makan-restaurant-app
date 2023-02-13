@@ -1,37 +1,47 @@
 import './webcomponents/app-bar';
+import UrlParser from '../routes/url-parser';
+import routes from '../routes/routes';
 
-class App {
-  constructor() {
-    this._header = document.querySelector('header');
-    this._main = document.querySelector('main');
-    this._footer = document.querySelector('footer');
-  }
-
+const app = {
   start() {
     this._initializeAppShell();
-  }
+  },
 
   _initializeAppShell() {
     this._setupHeader();
     this._setupMain();
     this._setupFooter();
-  }
+  },
 
   _setupHeader() {
-    const appBar = document.createElement('app-bar');
-    this._header.setAttribute('id', 'home');
-    this._header.append(appBar);
-  }
+    const header = document.querySelector('header');
+    header.innerHTML = `
+      <app-bar></app-bar>
+    `;
+  },
 
   _setupMain() {
-    this._main.setAttribute('id', 'main');
-  }
+    const main = document.querySelector('main');
+    main.innerHTML = `
+      <div id="appContent"></div>
+    `;
+  },
 
   _setupFooter() {
-    this._footer.innerHTML = `
+    const footer = document.querySelector('footer');
+    footer.innerHTML = `
       <p class="footerText">Suka Makan <span>&copy;</span> 2023</p>
     `;
-  }
-}
+  },
 
-export default App;
+  async renderPage() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
+    console.log(url);
+    const page = routes[url];
+    const content = document.querySelector('#appContent');
+    content.innerHTML = await page.render();
+    await page.afterRender();
+  },
+};
+
+export default app;
