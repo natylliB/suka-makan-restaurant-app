@@ -21,13 +21,20 @@ class AppBar extends HTMLElement {
     const drawer = document.querySelector('#drawer');
     const main = document.querySelector('main');
 
-    hamburgerButton.addEventListener('click', (evt) => {
-      evt.stopPropagation();
+    hamburgerButton.addEventListener('click', () => {
       drawer.classList.toggle('open');
     });
 
-    main.addEventListener('click', (evt) => {
-      evt.stopPropagation();
+    drawer.addEventListener('click', (evt) => {
+      if (window.innerWidth >= 1000) {
+        return;
+      }
+      if (evt.target.tagName === 'A') {
+        drawer.classList.toggle('open');
+      }
+    });
+
+    main.addEventListener('click', () => {
       drawer.classList.remove('open');
     });
   }

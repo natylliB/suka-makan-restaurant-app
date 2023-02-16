@@ -1,8 +1,8 @@
 import Page from './page';
 
-class Home extends Page {
+class Review extends Page {
   async render() {
-    return '<h2>Menu Utama</h2>';
+    return '<h2>Review</h2>';
   }
 
   async afterRender() {
@@ -10,4 +10,4 @@ class Home extends Page {
   }
 }
 
-export default Home;
+export default Review;
