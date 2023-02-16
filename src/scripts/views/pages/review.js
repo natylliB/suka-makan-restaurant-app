@@ -1,8 +1,8 @@
 import Page from './page';
 
 class Review extends Page {
-  async render() {
-    return '<h2>Review</h2>';
+  constructor(pageTitle = 'Review: ') {
+    super(pageTitle);
   }
 
   async afterRender() {

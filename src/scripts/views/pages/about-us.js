@@ -1,8 +1,8 @@
 import Page from './page';
 
 class AboutUs extends Page {
-  async render() {
-    return '<h2>Tentang Kami</h2>';
+  constructor(pageTitle = 'Tentang Kami') {
+    super(pageTitle);
   }
 
   async afterRender() {

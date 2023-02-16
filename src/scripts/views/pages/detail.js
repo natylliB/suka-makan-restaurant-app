@@ -1,12 +1,16 @@
+import RestaurantAPI from '../../data/restaurant-api';
+import UrlParser from '../../routes/url-parser';
 import Page from './page';
 
 class Detail extends Page {
-  async render() {
-    return '<h2>Halaman Detail</h2>';
+  constructor(pageTitle = 'Halaman Detail') {
+    super(pageTitle);
   }
 
   async afterRender() {
-    // run after render
+    const url = UrlParser.parseActiveUrlWithoutCombiner();
+    const restaurant = await RestaurantAPI.restaurantDetail(url.id);
+    console.log(restaurant);
   }
 }
 

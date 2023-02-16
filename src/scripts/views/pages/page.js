@@ -1,16 +1,16 @@
 class Page {
-  constructor() {
-    if (this.constructor === Page) {
-      throw new TypeError(`Abstract Class "${this.constructor.name}" cannot be instantiated directly.`);
-    }
+  #pageTitle = null;
+
+  constructor(pageTitle) {
+    this.#pageTitle = pageTitle;
   }
 
   async render() {
-    throw new EvalError(`You are running "${this.render.name}" method from Abstract Class`);
+    return `<h2 id="appContentTitle" class="app-content__title">${this.#pageTitle}</h2> `;
   }
 
   async afterRender() {
-    throw new EvalError(`You are running "${this.afterRender.name}" method from Abstract Class`);
+    throw new SyntaxError(`You must override this "${this.afterRender.name}" method`);
   }
 }
 

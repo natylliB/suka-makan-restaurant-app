@@ -1,3 +1,4 @@
+import RestaurantAPI from '../../data/restaurant-api';
 import Page from './page';
 
 class Home extends Page {
@@ -6,7 +7,8 @@ class Home extends Page {
   }
 
   async afterRender() {
-    // run after the page is rendered
+    const restaurants = await RestaurantAPI.restaurantsList();
+    console.log(restaurants);
   }
 }
 
