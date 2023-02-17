@@ -6,7 +6,7 @@ class Page {
   }
 
   async render() {
-    return `<h2 id="appContentTitle" class="app-content__title">${this.#pageTitle}</h2> `;
+    return `<h2 id="pageTitle" class="page-title">${this.#pageTitle}</h2> `;
   }
 
   async afterRender() {
