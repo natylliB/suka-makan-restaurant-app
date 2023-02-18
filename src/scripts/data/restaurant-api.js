@@ -36,6 +36,14 @@ class RestaurantAPI {
     const responseJSON = await response.json();
     return responseJSON;
   }
+
+  static getImageSrc(pictureId, size) {
+    const sizes = ['small', 'medium', 'large'];
+    if (sizes.includes(`${size}`.toLowerCase())) {
+      return API_ENDPOINT.PICTURE(pictureId, size);
+    }
+    throw EvalError('size is either, "small", "medium" or "large".');
+  }
 }
 
 export default RestaurantAPI;

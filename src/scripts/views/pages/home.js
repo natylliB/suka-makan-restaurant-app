@@ -1,5 +1,6 @@
 import RestaurantAPI from '../../data/restaurant-api';
 import '../webcomponents/search-bar';
+import '../webcomponents/restaurant-collection';
 import Page from './page';
 
 class Home extends Page {
@@ -22,8 +23,14 @@ class Home extends Page {
   }
 
   async afterRender() {
+    const pageContent = document.querySelector('#pageContent');
+
     const restaurants = await RestaurantAPI.restaurantsList();
-    console.log(restaurants);
+
+    const restaurantCollection = document.createElement('restaurant-collection');
+    restaurantCollection.restaurants = restaurants;
+
+    pageContent.appendChild(restaurantCollection);
   }
 }
 

@@ -9,6 +9,10 @@ const API_ENDPOINT = {
     return url;
   },
   REVIEW: new URL('review', CONFIG.BASE_URL),
+  PICTURE: (pictureId, imgSize) => {
+    const url = new URL(`${imgSize}/${pictureId}`, CONFIG.PICTURE_URL);
+    return url.toString();
+  },
 };
 
 export default API_ENDPOINT;
