@@ -1,10 +1,6 @@
 class SearchBar extends HTMLElement {
   #searchHandlerFunction = null;
 
-  connectedCallback() {
-    this.addSearchHandler();
-  }
-
   addSearchHandler(handlerFunction = (searchString) => {
     console.log('Default handler activated, handler function is not set for the search button.');
     console.log(`Search String: ${searchString}`);
@@ -20,13 +16,14 @@ class SearchBar extends HTMLElement {
         <label class="search-bar__form-label" for="restaurantSearch">Telusuri Restoran</label>
         <div class="search-bar__form-search">
           <input class="search-bar__form-input-text" type="search" id="inputSearch" placeholder="Masukan Nama Restoran">
-          <button class="search-bar__form-button" id="buttonBrowse"><img src="../../../images/icons/twotone_search_white_24dp.png"></button>
+          <button class="search-bar__form-button" id="buttonBrowse" aria-label="search"><img src="../../../images/icons/twotone_search_white_24dp.png"></button>
         </div>
       </form>
     `;
     const buttonBrowse = document.querySelector('#buttonBrowse');
 
-    buttonBrowse.addEventListener('click', () => {
+    buttonBrowse.addEventListener('click', (evt) => {
+      evt.preventDefault();
       const searchString = document.querySelector('#inputSearch').value;
       this.#searchHandlerFunction(searchString);
     });

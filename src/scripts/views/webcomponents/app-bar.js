@@ -7,7 +7,7 @@ class AppBar extends HTMLElement {
     this.setAttribute('aria-label', 'App Bar');
     this.setAttribute('class', 'app-bar');
     this.innerHTML = `
-      <a href="#main" class="app-bar__to-main-navigator">Ke Konten Utama</a>
+      <a href="#appContent" class="app-bar__to-main-navigator">Ke Konten Utama</a>
       <a href="#"><img src="./images/logo/Suka-Makan-Logo.png" width="124px" alt="Suka Makan"></a>
       <button class="app-bar__menu-button" id="hamburgerButton" aria-label="buka/tutup menu navigasi">☰</button>
       <nav id="drawer" class="app-bar__navigations">

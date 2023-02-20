@@ -16,21 +16,39 @@ class Home extends Page {
               <h1 class="hero__inner-title">Restoran Nusantara</h1>
               <p class="hero__inner-text">Jelajahi pilihan restoran nusantara yang dikutip kami.</p>
               <search-bar></search-bar>
+              </div>
             </div>
-          </div>
+            <restaurant-collection></restaurant-collection>
       </div>
     `;
   }
 
   async afterRender() {
-    const pageContent = document.querySelector('#pageContent');
+    const searchBar = document.querySelector('search-bar');
+    searchBar.addSearchHandler(this.#handlerForSearchBar);
 
-    const restaurants = await RestaurantAPI.restaurantsList();
+    this.#updateCollection();
+  }
 
-    const restaurantCollection = document.createElement('restaurant-collection');
-    restaurantCollection.restaurants = restaurants;
+  #handlerForCollectionItem = (itemId) => {
+    window.location.href = `#/detail/${itemId}`;
+  };
 
-    pageContent.appendChild(restaurantCollection);
+  #handlerForSearchBar = (searchString) => {
+    this.#updateCollection(searchString);
+  };
+
+  async #updateCollection(searchString = '') {
+    const restaurants = searchString === ''
+      ? await RestaurantAPI.restaurantsList()
+      : await RestaurantAPI.searchRestaurant(searchString);
+
+    const title = searchString === ''
+      ? 'Jelajah Restoran'
+      : `Restoran: ${searchString}`;
+
+    const restaurantCollection = document.querySelector('restaurant-collection');
+    restaurantCollection.initialize(restaurants, title, this.#handlerForCollectionItem);
   }
 }
 
