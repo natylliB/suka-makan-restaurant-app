@@ -1,4 +1,5 @@
 import RestaurantAPI from '../../data/restaurant-api';
+import stringTruncate from '../../data/string-truncate';
 
 class RestaurantItem extends HTMLElement {
   #restaurant = null;
@@ -20,6 +21,7 @@ class RestaurantItem extends HTMLElement {
       pictureId,
       city,
       rating,
+      description,
     } = this.#restaurant;
 
     this.setAttribute('ariaLabel', `Restoran: ${name}`);
@@ -27,13 +29,18 @@ class RestaurantItem extends HTMLElement {
 
     this.innerHTML = `
       <div class="restaurant-item__container">
-        <img class="restaurant-item__thumbnail" aria-label="Restoran: ${name}" src="${RestaurantAPI.getImageSrc(pictureId, 'small')}">
-        <p class="restaurant-item__name">${name}</p>
-        <div class="restaurant-item__city-container">
-          <img src="${'../../../images/icons/baseline_location_on_black_24dp.png'}" class="restaurant-item__city-location-icon" alt="location">
-          <span class="restaurant-item__city-text">${String(city).toUpperCase()}</span>
+        <div class="restaurant-item__kv">
+          <img class="restaurant-item__kv-thumbnail" aria-label="Restoran: ${name}" src="${RestaurantAPI.getImageSrc(pictureId, 'small')}">
+          <div class="restaurant-item__kv-city-container">
+            <img src="${'../../../images/icons/baseline_location_on_white_24dp.png'}" class="restaurant-item__kv-city-icon" alt="location">
+            <span class="restaurant-item__kv-city-text">${city}</span>
+          </div>
         </div>
-        <p class="restaurant-item__rating">Rating: ${Number(rating).toFixed(1)}</p>
+        <div class="restaurant-item__text">
+          <p class="restaurant-item__text-name">${name}</p>
+          <p class="restaurant-item__text-rating">Rating: ${Number(rating).toFixed(1)}</p>
+          <p class="restaurant-item__text-description">${stringTruncate(description)}</p>
+        </div>
       </div>
     `;
   }

@@ -1,6 +1,7 @@
 import 'regenerator-runtime';
 import '../styles/main.scss';
 import '../styles/responsive.scss';
+import './views/webcomponents/loader-screen';
 import App from './views/app';
 
 const main = () => {

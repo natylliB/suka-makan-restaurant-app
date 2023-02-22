@@ -221,10 +221,7 @@ main {
   @include variables.flexdisplay(column);
   box-shadow: 0 5px 10px 0 rgba( 0, 0, 0, .4 );
   border-radius: 5px;
-  > .restaurant-item__thumbnail {
-    width: 100%;
-    height: 200px;
-  }
+
   > .restaurant-item__name {
     margin-top: 8px;
 
@@ -232,24 +229,50 @@ main {
     font-size: variables.$heading5;
     font-weight: bold;
   }
-  > .restaurant-item__city-container {
-    margin-top: 4px;
-    @include variables.flexdisplay(row);
-    gap: 3px;
-    align-items: center;
-    > .restaurant-item__city-location-icon {
-      width: 15px;
-      height: 15px;
-      filter: invert(59%) sepia(0%) saturate(0%) hue-rotate(230deg) brightness(90%) contrast(98%);
-    }
-    > .restaurant-item__city-text {
-      color: #888;
-      font-size: .8em;
-    }
-  }
   > .restaurant-item__rating {
     margin-top: 4px;
     font-size: 15px;
+  }
+}
+
+.restaurant-item__text {
+  padding: 8px 0;
+  @include variables.flexdisplay(column);
+  gap: 4px;
+  > .restaurant-item__text-name {
+    color: variables.$primary-color;
+    font-size: variables.$heading5;
+    font-weight: bold;
+  }
+}
+
+.restaurant-item__kv{
+  width: 100%;
+  height: 200px;
+  position: relative;
+  > .restaurant-item__kv-thumbnail {
+    width:100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+  > .restaurant-item__kv-city-container {
+    position: absolute;
+    top: 0;
+    background-image: linear-gradient(to right, variables.$primary-color, #FF6701cc , transparent);
+    @include variables.flexdisplay(row);
+    gap: 4px;
+    padding: 8px;
+    padding-right: 36px;
+    border-top-left-radius: 5px;
+
+    align-items: center;
+    > .restaurant-item__kv-city-icon {
+      width: 18px;
+      height: 18px;
+    }
+    > .restaurant-item__kv-city-text {
+      color: white;
+    }
   }
 }
 
@@ -319,4 +342,8 @@ footer {
     color: variables.$var2-color;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
+}
+
+loader-screen {
+  display: none;
 }

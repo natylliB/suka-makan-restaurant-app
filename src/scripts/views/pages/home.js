@@ -1,6 +1,7 @@
 import RestaurantAPI from '../../data/restaurant-api';
 import '../webcomponents/search-bar';
 import '../webcomponents/restaurant-collection';
+import LoaderScreenControl from '../webcomponents/loader-screen-control';
 import Page from './page';
 
 class Home extends Page {
@@ -39,6 +40,8 @@ class Home extends Page {
   };
 
   async #updateCollection(searchString = '') {
+    LoaderScreenControl.showLoader();
+
     const restaurants = searchString === ''
       ? await RestaurantAPI.restaurantsList()
       : await RestaurantAPI.searchRestaurant(searchString);
@@ -47,6 +50,7 @@ class Home extends Page {
       ? 'Jelajah Restoran'
       : `Restoran: ${searchString}`;
 
+    LoaderScreenControl.hideLoader();
     const restaurantCollection = document.querySelector('restaurant-collection');
     restaurantCollection.initialize(restaurants, title, this.#handlerForCollectionItem);
   }
