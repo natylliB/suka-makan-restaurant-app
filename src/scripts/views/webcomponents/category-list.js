@@ -9,6 +9,12 @@ class CategoryList extends HTMLElement {
   render(categories, bgColor = '#888', color = 'black') {
     this.#shadowRoot.innerHTML = `
       <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
         .category-list__container {
           display: flex;
           flex-flow: row wrap;
@@ -28,8 +34,10 @@ class CategoryList extends HTMLElement {
         }
 
         .category-list__title {
-          color: #FF6701;
           margin: 4px 16px;
+
+          color: #FF6701;
+          font-weight: bold;
         }
       </style>
       <p class="category-list__title">Kategori:</p>
