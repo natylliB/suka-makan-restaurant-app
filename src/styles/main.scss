@@ -221,18 +221,6 @@ main {
   @include variables.flexdisplay(column);
   box-shadow: 0 5px 10px 0 rgba( 0, 0, 0, .4 );
   border-radius: 5px;
-
-  > .restaurant-item__name {
-    margin-top: 8px;
-
-    color: variables.$primary-color;
-    font-size: variables.$heading5;
-    font-weight: bold;
-  }
-  > .restaurant-item__rating {
-    margin-top: 4px;
-    font-size: 15px;
-  }
 }
 
 .restaurant-item__text {
@@ -274,6 +262,32 @@ main {
       color: white;
     }
   }
+}
+
+.restaurant-detail__cover {
+  width: 100%;
+  height: 300px;
+}
+
+.restaurant-detail__name {
+  color: variables.$primary-color;
+  margin: 16px 16px 0 16px;
+}
+
+.restaurant-detail__name::after {
+  content: "";
+  display: block;
+  border-top: 1px solid variables.$primary-color;
+  margin-top: 8px;
+}
+
+.restaurant-detail__city, .restaurant-detail__address {
+  color: #888;
+  margin: 8px 16px;
+}
+
+.restaurant-detail__description {
+  margin: 16px;
 }
 
 // .restaurantContainer {

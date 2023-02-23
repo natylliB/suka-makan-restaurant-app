@@ -5,10 +5,6 @@ import LoaderScreenControl from '../webcomponents/loader-screen-control';
 import Page from './page';
 
 class Home extends Page {
-  constructor(pageTitle = 'Menu Utama') {
-    super(pageTitle);
-  }
-
   async render() {
     return `
       <div id="pageContent" class="page-content">
