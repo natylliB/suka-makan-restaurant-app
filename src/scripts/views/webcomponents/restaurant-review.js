@@ -1,4 +1,5 @@
 import './review-collection';
+import './add-review';
 
 class RestaurantReview extends HTMLElement {
   #shadowRoot = null;
@@ -21,7 +22,6 @@ class RestaurantReview extends HTMLElement {
           font-weight: bold;
           margin: 8px 16px;
           border-bottom: 1px solid #FF6701;
-
         }
         .review-collection {
           width: 100%;
@@ -31,11 +31,37 @@ class RestaurantReview extends HTMLElement {
       <p class="review-title">Reviews:</p>
     `;
 
+    const reviewCollection = this.#createReviewCollection(customerReviews);
+
+    const addReview = this.#creatAddReviewComponent();
+
+    this.#shadowRoot.append(reviewCollection, addReview);
+  }
+
+  #createReviewCollection(customerReviews) {
     const reviewCollection = document.createElement('review-collection');
     reviewCollection.setAttribute('class', 'review-collection');
     reviewCollection.reviews = customerReviews;
+    return reviewCollection;
+  }
 
-    this.#shadowRoot.appendChild(reviewCollection);
+  #renewReviewData(customerReviews) {
+    const reviewCollection = this.#shadowRoot.querySelector('review-collection');
+    reviewCollection.reviews = customerReviews;
+  }
+
+  #creatAddReviewComponent() {
+    const addReview = document.createElement('add-review');
+    addReview.initialize((JSONObject) => {
+      if (JSONObject.error) {
+        console.error('gagal menambahkan review');
+        return;
+      }
+      console.log('sukses menambahkan review');
+      this.#renewReviewData(JSONObject.customerReviews);
+    });
+
+    return addReview;
   }
 }
 

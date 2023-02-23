@@ -19,19 +19,18 @@ class RestaurantAPI {
     return responseJSON.restaurants;
   }
 
-  static async addReview({ id, name, review }) {
+  static async addReview(id, name, review) {
     const reviewContent = {
       id,
       name,
       review,
     };
-    JSON.stringify(reviewContent);
     const response = await fetch(API_ENDPOINT.REVIEW, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: reviewContent,
+      body: JSON.stringify(reviewContent),
     });
     const responseJSON = await response.json();
     return responseJSON;
