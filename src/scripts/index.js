@@ -17,5 +17,5 @@ const main = () => {
 
 window.addEventListener('load', () => {
   main();
-  swRegister();
+  // swRegister();
 });

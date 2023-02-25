@@ -28,6 +28,7 @@ body {
     margin-left: auto;
   }
 }
+
 .app-bar__to-main-navigator{
   position: absolute;
   top: -100%;
@@ -54,7 +55,6 @@ body {
 .app-bar__navigations {
   @include variables.flexdisplay( column );
   position: fixed;
-  display: none;
   top: 0;
   right: -100%;
   z-index: 1;
@@ -79,7 +79,6 @@ body {
 
 .app-bar__navigations.open {
   transform: translate( -100%, 0 );
-  display: block;
 }
 
 main {
