@@ -122,7 +122,6 @@ class AddReview extends HTMLElement {
       const { id } = UrlParser.parseActiveUrlWithoutCombiner();
 
       const response = await RestaurantAPI.addReview(id, inputName.value, reviewTextArea.value);
-      console.log(response);
       this.#btnPostCallback(response);
     });
   }
