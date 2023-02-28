@@ -15,13 +15,12 @@ class CacheHelper {
   }
 
   static async revalidateCache(request) {
-    const response = await caches.match(request);
-    
-    if(response) {
-      this.#fetchRequest(request);
-      return response;
+    try {
+      return await this.#fetchRequest(request);
     }
-    return this.#fetchRequest(request);
+    catch {
+      return await caches.match(request);
+    }
   }
 
   static async #fetchRequest(request) {
