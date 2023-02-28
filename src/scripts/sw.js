@@ -21,11 +21,15 @@ const assetsToPrecache = [
 ];
 
 self.addEventListener('install', (evt) => {
+  self.skipWaiting();
   evt.waitUntil(CacheHelper.cachingAppShell([...assetsToPrecache]));
 });
 
 self.addEventListener('activate', (evt) => {
-  evt.waitUntil(CacheHelper.deleteOldCache());
+  evt.waitUntil(() => {
+    CacheHelper.deleteOldCache();
+    clients.claim();
+  });
 });
 
 self.addEventListener('fetch', (evt) => {

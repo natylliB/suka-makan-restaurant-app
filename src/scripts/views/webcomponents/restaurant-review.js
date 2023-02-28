@@ -45,11 +45,6 @@ class RestaurantReview extends HTMLElement {
     return reviewCollection;
   }
 
-  // #renewReviewData(customerReviews) {
-  //   const reviewCollection = this.#shadowRoot.querySelector('review-collection');
-  //   reviewCollection.reviews = customerReviews;
-  // }
-
   #creatAddReviewComponent() {
     const addReview = document.createElement('add-review');
     addReview.initialize((JSONObject) => {
@@ -58,7 +53,6 @@ class RestaurantReview extends HTMLElement {
         return;
       }
       console.log('sukses menambahkan review');
-      // this.#renewReviewData(JSONObject.customerReviews);
       location.reload(true);
     });
 
