@@ -7,14 +7,18 @@ class RestaurantCollection extends HTMLElement {
 
   #itemClickHandler = null;
 
+  #errorMessage = null;
+
   initialize(
     restaurantObjects,
     collectionTitle = 'Koleksi Restoran',
-    itemClickHandler = (itemId) => { console.log(`default handler activated, item id: ${itemId}`); },
+    itemClickHandler = (itemId) => { console.log(`default handler activated, item id: ${itemId}`);},
+    errorMessage = { title: 'Data Tidak Ketemu!', text: 'Restoran yang anda cari tidak ditemukan.' }
   ) {
     this.#restaurants = restaurantObjects;
     this.#collectionTitle = collectionTitle;
     this.#itemClickHandler = itemClickHandler;
+    this.#errorMessage = errorMessage;
     this.#render();
   }
 
@@ -32,8 +36,8 @@ class RestaurantCollection extends HTMLElement {
       <div class="restaurant-collection__error">
         <img src="../../../images/icons/outline_error_outline_black_48dp.png" alt="error" class="restaurant-collection__error-icon">
         <div>
-          <p class="restaurant-collection__error-title">Data Tidak Ketemu!</p>
-          <p class="restaurant-collection__error-text">Restoran yang anda cari tidak ditemukan.</p>
+          <p class="restaurant-collection__error-title">${this.#errorMessage.title}</p>
+          <p class="restaurant-collection__error-text">${this.#errorMessage.text}</p>
         </div>
       </div>
     `;

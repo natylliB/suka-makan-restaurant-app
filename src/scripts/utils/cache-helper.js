@@ -19,7 +19,12 @@ class CacheHelper {
       return await this.#fetchRequest(request);
     }
     catch {
-      return await caches.match(request);
+      const response = await caches.match(request);
+
+      if(response) {
+        return response;
+      }
+      return;
     }
   }
 

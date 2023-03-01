@@ -4,6 +4,7 @@ import LoaderScreenControl from '../webcomponents/loader-screen-control';
 import '../webcomponents/category-list';
 import '../webcomponents/restaurant-menu';
 import '../webcomponents/restaurant-review';
+import '../webcomponents/favorite-button';
 import Page from './page';
 
 class Detail extends Page {
@@ -19,12 +20,13 @@ class Detail extends Page {
 
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantAPI.restaurantDetail(url.id);
-    this.#renderDetail(restaurant);
+    await this.#renderDetail(restaurant);
 
     LoaderScreenControl.hideLoader();
   }
 
-  #renderDetail({
+  async #renderDetail({
+    id,
     name,
     description,
     city,
@@ -38,7 +40,10 @@ class Detail extends Page {
     const pageContent = document.querySelector('#pageContent');
 
     pageContent.innerHTML = `
-      <img class="restaurant-detail__cover" src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
+      <div class="restaurant-detail__cover">
+        <img class="restaurant-detail__cover-img" src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
+        <favorite-button></favorite-button>
+      </div>
       <h2 class="restaurant-detail__name">${name}</h2>
       <p class="restaurant-detail__rating">Rating: ${Number(rating).toFixed(1)}</p>
       <p class="restaurant-detail__city">Kota: ${city}</p>
@@ -57,6 +62,9 @@ class Detail extends Page {
 
     const restaurantReview = document.querySelector('restaurant-review');
     restaurantReview.render(customerReviews);
+
+    const favoriteButton = document.querySelector('favorite-button');
+    await favoriteButton.intialize({id, name, city, pictureId, rating, description});
   }
 }
 

@@ -21,7 +21,7 @@ class App {
   }
 
   #setupHeader() {
-    this.#header.innerHTML = `
+    this.#header.innerHTML += `
       <app-bar></app-bar>
     `;
   }

@@ -7,6 +7,8 @@ const assetsToPrecache = [
   './images/icons/baseline_location_on_white_24dp.png',
   './images/icons/outline_error_outline_black_48dp.png',
   './images/icons/twotone_search_white_24dp.png',
+  './images/icons/sharp_favorite_black_24dp.png',
+  './images/icons/sharp_favorite_border_black_24dp.png',
   './images/logo/Suka-Makan-Logo-48px.png',
   './images/logo/Suka-Makan-Logo-96px.png',
   './images/logo/Suka-Makan-Logo-144px.png',
@@ -21,15 +23,11 @@ const assetsToPrecache = [
 ];
 
 self.addEventListener('install', (evt) => {
-  self.skipWaiting();
   evt.waitUntil(CacheHelper.cachingAppShell([...assetsToPrecache]));
 });
 
 self.addEventListener('activate', (evt) => {
-  evt.waitUntil(() => {
-    CacheHelper.deleteOldCache();
-    clients.claim();
-  });
+  evt.waitUntil(CacheHelper.deleteOldCache());
 });
 
 self.addEventListener('fetch', (evt) => {

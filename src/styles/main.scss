@@ -263,9 +263,19 @@ main {
   }
 }
 
-.restaurant-detail__cover {
+.restaurant-detail__cover, .restaurant-detail__cover-img {
   width: 100%;
   height: 300px;
+}
+
+.restaurant-detail__cover {
+  position: relative;
+}
+
+favorite-button {
+  position: absolute;
+  bottom: -22px;
+  right: 24px;
 }
 
 .restaurant-detail__name {
@@ -294,59 +304,22 @@ main {
   margin: 16px;
 }
 
-// .restaurantContainer {
-//   width: 100%;
-//   padding: 16px;
-//   @include flexdisplay(column);
-//   box-shadow: 0 5px 10px 0 rgba( 0, 0, 0, .4 );
-//   border-radius: 5px;
-//   > .restaurantImages {
-//     width: 100%;
-//     height: 200px;
-//     position: relative;
-//     > img {
-//       width: 100%;
-//       height: 200px;
-//       object-fit: cover;
-//       object-position: 50% 50%;
-//     }
-//     > .city {
-//       background-image: linear-gradient( to right, $primary-color, transparent );
-//       padding: 8px 16px;
-//       display: block;
-//       width: 50%;
-//       border-top-right-radius: 3px;
-//       border-bottom-right-radius: 3px;
-//       position: absolute;
-//       color: $var2-color;
-//       top: 0;
-//       left: 0;
-//     }
-//   }
-//   > .restaurantContent {
-//       > .restaurantName {
-//         font-size: $heading4;
-//         font-weight: 200;
-//         margin-top: 16px;
-//         border-bottom: 1px solid $var1-color;
-//         padding: 4px;
-//       }
-//       > .restaurantRating {
-//         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-//         font-size: 16px;
-//         padding-left: 4px;
-//       }
-//       > .restaurantDescription {
-//         margin-top: 16px;
-//         line-height: 1.6;
-//         padding: 4px;
-//       }
-//   }
-// }
+.about-us__title {
+  color: variables.$primary-color;
+  padding: 20px 0;
+  text-align: center;
+}
+.about-us__title::after {
+  content: "";
+  display: block;
+  margin-top: 16px;
+  border-top: 1px solid variables.$primary-color;
+}
 
-// .restaurantContainer:hover { 
-//   border: 1px solid $primary-color;
-// }
+.about-us__content {
+  width: 80%;
+  margin: auto;
+}
 
 footer {
   width: 100%;
@@ -365,3 +338,4 @@ footer {
 loader-screen {
   display: none;
 }
+
