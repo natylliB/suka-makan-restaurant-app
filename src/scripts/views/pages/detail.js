@@ -64,7 +64,14 @@ class Detail extends Page {
     restaurantReview.render(customerReviews);
 
     const favoriteButton = document.querySelector('favorite-button');
-    await favoriteButton.intialize({id, name, city, pictureId, rating, description});
+    await favoriteButton.intialize({
+      id,
+      name,
+      city,
+      pictureId,
+      rating,
+      description,
+    });
   }
 }
 

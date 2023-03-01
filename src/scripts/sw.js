@@ -31,6 +31,6 @@ self.addEventListener('activate', (evt) => {
 });
 
 self.addEventListener('fetch', (evt) => {
-  if(evt.request.method !== 'GET') return;
+  if (evt.request.method !== 'GET') return;
   evt.respondWith(CacheHelper.revalidateCache(evt.request));
-})
+});

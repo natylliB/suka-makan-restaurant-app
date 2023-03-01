@@ -88,7 +88,7 @@ class AppBar extends HTMLElement {
         }
       </style>
     `;
-    
+
     this.#shadowRoot.innerHTML += `
       <div class="app-bar" aria-label="App Bar">
         <a href="#appContent" class="app-bar__to-main-navigator">Ke Konten Utama</a>

@@ -11,7 +11,7 @@ class AboutUs extends Page {
   }
 
   async afterRender() {
-    return ``;
+    return '';
   }
 }
 

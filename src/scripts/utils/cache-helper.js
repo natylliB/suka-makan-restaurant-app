@@ -11,19 +11,19 @@ class CacheHelper {
 
     cacheNames
       .filter((name) => name !== CONFIG.CACHE_NAME)
-      .map((filteredName => caches.delete(filteredName)));
+      .map((filteredName) => caches.delete(filteredName));
   }
 
   static async revalidateCache(request) {
     try {
       return await this.#fetchRequest(request);
-    }
-    catch {
+    } catch {
       const response = await caches.match(request);
 
-      if(response) {
+      if (response) {
         return response;
       }
+      // eslint-disable-next-line consistent-return, no-useless-return
       return;
     }
   }
@@ -31,7 +31,7 @@ class CacheHelper {
   static async #fetchRequest(request) {
     const response = await fetch(request);
 
-    if(!response || response.status !== 200){
+    if (!response || response.status !== 200) {
       return response;
     }
 

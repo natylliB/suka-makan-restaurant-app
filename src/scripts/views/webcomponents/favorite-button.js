@@ -46,14 +46,13 @@ class FavoriteButton extends HTMLElement {
       <div class="favorite-button-container"></div>
     `;
 
-
     await this.#renderButton();
   }
 
   async #renderButton() {
     const { id } = this.#restaurant;
 
-    if(await this.#isRestaurantFavorite(id)) {
+    if (await this.#isRestaurantFavorite(id)) {
       this.#renderLikedButton();
     } else {
       this.#renderLikeButton();
