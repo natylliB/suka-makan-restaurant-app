@@ -3,7 +3,6 @@ class RestaurantMenu extends HTMLElement {
 
   constructor() {
     super();
-
     this.#shadowRoot = this.attachShadow({ mode: 'open' });
   }
 

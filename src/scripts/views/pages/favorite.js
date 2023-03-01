@@ -17,8 +17,6 @@ class Favorite extends Page {
 
     const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
 
-    console.log(restaurants);
-
     const title = 'Restoran Favorit';
 
     LoaderScreenControl.hideLoader();

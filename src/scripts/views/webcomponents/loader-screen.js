@@ -1,4 +1,11 @@
 class LoaderScreen extends HTMLElement {
+  #shadowRoot = null;
+
+  constructor() {
+    super();
+    this.#shadowRoot = this.attachShadow({ mode: 'open' });
+  }
+
   connectedCallback() {
     this.innerHTML = `
       <style>
