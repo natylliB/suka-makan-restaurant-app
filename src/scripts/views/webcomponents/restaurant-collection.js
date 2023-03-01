@@ -19,8 +19,8 @@ class RestaurantCollection extends HTMLElement {
   initialize(
     restaurantObjects,
     collectionTitle = 'Koleksi Restoran',
-    itemClickHandler = (itemId) => { console.log(`default handler activated, item id: ${itemId}`);},
-    errorMessage = { title: 'Data Tidak Ketemu!', text: 'Restoran yang anda cari tidak ditemukan.' }
+    itemClickHandler = (itemId) => { console.log(`default handler activated, item id: ${itemId}`); },
+    errorMessage = { title: 'Data Tidak Ketemu!', text: 'Restoran yang anda cari tidak ditemukan.' },
   ) {
     this.#restaurants = restaurantObjects;
     this.#collectionTitle = collectionTitle;

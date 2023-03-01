@@ -9,7 +9,7 @@ class Favorite extends Page {
     <div id="pageContent" class="page-content">
       <restaurant-collection></restaurant-collection>
     </div>
-    `
+    `;
   }
 
   async afterRender() {
@@ -21,11 +21,12 @@ class Favorite extends Page {
 
     LoaderScreenControl.hideLoader();
     const restaurantCollection = document.querySelector('restaurant-collection');
-    restaurantCollection.initialize( 
+    restaurantCollection.initialize(
       restaurants,
       title,
       this.#handlerForCollectionItem,
-      {title: 'Tidak ada favorit!', text: 'Anda belum punya restoran favorit, ayo jelajah sekarang.'});
+      { title: 'Tidak ada favorit!', text: 'Anda belum punya restoran favorit, ayo jelajah sekarang.' },
+    );
   }
 
   #handlerForCollectionItem = (itemId) => {

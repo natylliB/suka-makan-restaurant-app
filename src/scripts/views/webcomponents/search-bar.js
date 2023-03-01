@@ -1,5 +1,6 @@
 class SearchBar extends HTMLElement {
   #searchHandlerFunction = null;
+
   #shadowRoot = null;
 
   constructor() {
@@ -78,8 +79,8 @@ class SearchBar extends HTMLElement {
           filter: brightness(0) saturate(100%) invert(41%) sepia(94%) saturate(1798%) hue-rotate(359deg) brightness(101%) contrast(105%);
         }
       </style>
-    `
-    
+    `;
+
     this.#shadowRoot.innerHTML += `
       <form class="search-bar__form" id="searchBarForm">
         <label class="search-bar__form-label" for="restaurantSearch">Telusuri Restoran</label>
