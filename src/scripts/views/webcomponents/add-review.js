@@ -79,6 +79,7 @@ class AddReview extends HTMLElement {
         .input-review:focus {
           outline: none;
           color: white;
+          font-family: Georgia, serif;
           background-color: #FFC288;
         }
 

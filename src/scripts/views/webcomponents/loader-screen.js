@@ -7,8 +7,14 @@ class LoaderScreen extends HTMLElement {
   }
 
   connectedCallback() {
-    this.innerHTML = `
+    this.#shadowRoot.innerHTML = `
       <style>
+        * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+
         .loader-screen {
           position: fixed;
           top: 0;

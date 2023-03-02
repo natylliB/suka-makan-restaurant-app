@@ -78,6 +78,42 @@ class SearchBar extends HTMLElement {
         .search-bar__form-button:focus > img {
           filter: brightness(0) saturate(100%) invert(41%) sepia(94%) saturate(1798%) hue-rotate(359deg) brightness(101%) contrast(105%);
         }
+
+        /* Tablet Screen */
+        @media only screen and ( min-width: 712px ) {
+          .search-bar__form {
+            width: 70%;
+          }
+        }
+
+
+        /* Normal Desktop Screen */
+        @media only screen and ( min-width: 1000px ) {
+          .search-bar__form {
+            display: flex;
+            flex-direction: row;
+            padding-top: 40px;
+            width: 60%;
+          }
+
+          .search-bar__form-label {
+            margin-right: 16px;
+          }
+
+          .search-bar__form-search {
+            flex-basis: 80%;
+          }
+        }
+
+        /* Bigger Desktop Screen */
+        @media only screen and ( min-width: 1200px ) {
+          .search-bar__form-input-text {
+            flex-basis: 80%;
+          }
+          .search-bar__form-button {
+            flex-basis: 20%;
+          }
+        }
       </style>
     `;
 

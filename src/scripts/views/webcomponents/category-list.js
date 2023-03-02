@@ -21,7 +21,7 @@ class CategoryList extends HTMLElement {
           align-content: flex-start;
           gap: 4px;
           padding: 8px 0;
-          margin: 0 16px 8px;
+          margin-bottom: 8px;
           border-top: 1px solid #FF6701;
           border-bottom: 1px solid #FF6701;
         }
@@ -34,7 +34,7 @@ class CategoryList extends HTMLElement {
         }
 
         .category-list__title {
-          margin: 4px 16px;
+          margin: 4px 0;
 
           color: #FF6701;
           font-weight: bold;

@@ -78,13 +78,39 @@ class AppBar extends HTMLElement {
 
         .app-bar__navigations > a:focus, .app-bar__navigations > a:hover {
           text-decoration: underline;
-          background-color: #FEA82F;
+          background-color: #FCECDD;
           color: black;
           outline:none;
         }
         
         .app-bar__navigations.open {
           transform: translate( -100%, 0 );
+        }
+
+        /* Normal Desktop Screen */
+        @media only screen and ( min-width: 1000px ) {
+          .app-bar__menu-button {
+            display: none;
+          }
+          .app-bar__navigations {
+            display: flex;
+            flex-direction: row;
+            position: sticky;
+            top:0;
+            z-index: 0;
+            justify-content: flex-end;
+            background-color: white;
+            width: auto;
+            height: auto;
+            margin-left: auto;
+          }
+          .app-bar__navigations > a {
+            border-right: 1px solid #FFC288;
+            color: #FF6701;
+          }
+          .app-bar__navigations > a:last-child {
+            border-right: none;
+          }
         }
       </style>
     `;

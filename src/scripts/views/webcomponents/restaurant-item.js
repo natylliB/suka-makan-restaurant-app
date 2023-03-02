@@ -52,13 +52,17 @@ class RestaurantItem extends HTMLElement {
           padding: 8px 0;
           display: flex;
           flex-direction: column;
-          gap: 4px;
+          gap: 8px;
         }
 
         .restaurant-item__text-name {
           color: #FF6701;
           font-size: 1.2em;
           font-weight: bold;
+        }
+
+        .restaurant-item__text-description {
+          line-height: 1.5em;
         }
         
         .restaurant-item__kv{
@@ -71,6 +75,7 @@ class RestaurantItem extends HTMLElement {
           width:100%;
           height: 100%;
           border-radius: 5px;
+          object-fit: cover;
         }
         
         .restaurant-item__kv-city-container {
@@ -106,12 +111,12 @@ class RestaurantItem extends HTMLElement {
         <div class="restaurant-item__kv">
           <img class="restaurant-item__kv-thumbnail" aria-label="Restoran: ${name}" src="${RestaurantAPI.getImageSrc(pictureId, 'small')}">
           <div class="restaurant-item__kv-city-container">
-            <img src="${'../../../images/icons/baseline_location_on_white_24dp.png'}" class="restaurant-item__kv-city-icon" alt="location">
+            <img src="${'../../../images/icons/baseline_location_on_white_24dp.png'}" class="restaurant-item__kv-city-icon" alt="Kota">
             <span class="restaurant-item__kv-city-text">${city}</span>
           </div>
         </div>
         <div class="restaurant-item__text">
-          <p class="restaurant-item__text-name">${name}</p>
+          <a class="restaurant-item__text-name" href="#/detail/${this.itemId}">${name}</a>
           <p class="restaurant-item__text-rating">Rating: ${Number(rating).toFixed(1)}</p>
           <p class="restaurant-item__text-description">${stringTruncate(description)}</p>
         </div>

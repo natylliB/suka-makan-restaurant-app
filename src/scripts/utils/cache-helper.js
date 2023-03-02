@@ -23,8 +23,8 @@ class CacheHelper {
       if (response) {
         return response;
       }
-      // eslint-disable-next-line consistent-return, no-useless-return
-      return;
+      // eslint-disable-next-line consistent-return
+      return new Response();
     }
   }
 

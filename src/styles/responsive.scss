@@ -1,11 +1,7 @@
 @use 'variables';
 
+/* tablet screen */
 @media only screen and ( min-width: 712px ) {
-  #explore-restaurant {
-    > .collection {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
   .hero {
     min-height: 480px;
     > .hero__inner {
@@ -15,19 +11,14 @@
       }
     }
   }
-  .search-bar__form {
-    width: 70%;
+
+  .restaurant-detail__cover, .restaurant-detail__cover-img {
+    height: 480px;
   }
 }
 
+/* normal desktop screen */
 @media only screen and ( min-width: 1000px ) {
-  #explore-restaurant {
-    > .collection {
-      grid-template-columns: repeat( 3, 1fr );
-      width: 90%;
-      margin: auto;
-    }
-  }
   .hero {
     > .hero__inner {
       > .hero__inner-title {
@@ -35,47 +26,53 @@
       }
     }
   }
-  .app-bar__menu-button {
-    display: none;
+  .restaurant-detail {
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(8, auto);
+    padding: 16px;
   }
-  .app-bar__navigations {
-    @include variables.flexdisplay(row);
-    position: sticky;
-    top:0;
-    z-index: 0;
-    justify-content: flex-end;
-    background-color: white;
-    width: auto;
-    height: auto;
-    margin-left: auto;
-    > a {
-      border-right: 1px solid variables.$var1-color;
-      color: variables.$primary-color;
-    }
-    > a:last-child {
-      border-right: none;
-    }
+
+  .restaurant-detail__cover {
+    grid-area: 1 / 1 / 6 / 2;
   }
-  .search-bar__form {
-    @include variables.flexdisplay(row);
-    padding-top: 40px;
-    width: 60%;
-    >.search-bar__form-label {
-      margin-right: 16px;
-    }
-    >.search-bar__form-search {
-      flex-basis: 80%;
-    }
+  
+  .restaurant-detail__name {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  .restaurant-detail__rating {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+  .restaurant-detail__city {
+    grid-area: 3 / 2 / 4 / 3;
+  }
+  .restaurant-detail__address {
+    grid-area: 4 / 2 / 5 / 3;
+  }
+
+  category-list {
+    grid-area: 5 / 2 / 6 / 3;
+  }
+
+  .restaurant-detail__description {
+    grid-area: 6 / 1 / 7 / 3;
+  }
+
+  restaurant-menu {
+    grid-area: 7 / 1 / 8 / 3;
+  }
+
+  restaurant-review {
+    grid-area: 8 / 1 / 9 / 3;
+  }
+
+  favorite-button {
+    bottom: 24px;
   }
 }
 
-@media only screen and (min-width: 1200px) {
-  #explore-restaurant {
-    > .collection {
-      grid-template-columns: repeat( 4, 1fr );
-      width: 80%;
-    }
-  }
+
+/* big desktop screen */
+@media only screen and (min-width: 1400px) {
   .hero {
     min-width: 1000px;
     min-height: 690px;
@@ -83,12 +80,9 @@
       min-height: 690px;
     }
   }
-  .search-bar__form-search {
-    > .search-bar__form-input-text {
-      flex-basis: 80%;
-    }
-    > .search-bar__form-button {
-      flex-basis: 20%;
-    }
+  .restaurant-detail {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
   }
 }

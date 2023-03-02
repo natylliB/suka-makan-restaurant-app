@@ -87,6 +87,30 @@ class RestaurantCollection extends HTMLElement {
           padding: 16px;
           gap: 16px;
         }
+        
+        /* Tablet Size */
+        @media only screen and ( min-width: 712px ) {
+          .restaurant-collection__container {
+              grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        /* Normal Desktop Screen */
+        @media only screen and ( min-width: 1000px ) {
+          .restaurant-collection__container {
+            grid-template-columns: repeat( 3, 1fr );
+            width: 90%;
+          }
+        }
+
+        /* Huge Desktop Screen */
+        @media only screen and ( min-width: 1400px ) {
+          .restaurant-collection__container {
+            grid-template-columns: repeat( 4, 1fr );
+            width: 80%;
+            max-width: 1400px;
+          }
+        }
       </style>
     `;
 

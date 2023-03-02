@@ -40,18 +40,20 @@ class Detail extends Page {
     const pageContent = document.querySelector('#pageContent');
 
     pageContent.innerHTML = `
-      <div class="restaurant-detail__cover">
-        <img class="restaurant-detail__cover-img" src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
-        <favorite-button></favorite-button>
+      <div class="restaurant-detail">
+        <div class="restaurant-detail__cover">
+          <img class="restaurant-detail__cover-img" aria-label="Restoran: ${name}"src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
+          <favorite-button></favorite-button>
+        </div>
+        <h2 class="restaurant-detail__name">${name}</h2>
+        <p class="restaurant-detail__rating">Rating: ${Number(rating).toFixed(1)}</p>
+        <p class="restaurant-detail__city">Kota: ${city}</p>
+        <p class="restaurant-detail__address">Alamat: ${address}</p>
+        <category-list></category-list>
+        <p class="restaurant-detail__description">${description}</p>
+        <restaurant-menu></restaurant-menu>
+        <restaurant-review></restaurant-review>
       </div>
-      <h2 class="restaurant-detail__name">${name}</h2>
-      <p class="restaurant-detail__rating">Rating: ${Number(rating).toFixed(1)}</p>
-      <p class="restaurant-detail__city">Kota: ${city}</p>
-      <p class="restaurant-detail__address">Alamat: ${address}</p>
-      <category-list></category-list>
-      <p class="restaurant-detail__description">${description}</p>
-      <restaurant-menu></restaurant-menu>
-      <restaurant-review></restaurant-review>
     `;
 
     const categoryList = document.querySelector('category-list');
