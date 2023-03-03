@@ -42,7 +42,7 @@ class Detail extends Page {
     pageContent.innerHTML = `
       <div class="restaurant-detail">
         <div class="restaurant-detail__cover">
-          <img class="restaurant-detail__cover-img" aria-label="Restoran: ${name}"src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
+          <img class="restaurant-detail__cover-img" alt="Restoran: ${name}"src=${RestaurantAPI.getImageSrc(pictureId, 'medium')}>
           <favorite-button></favorite-button>
         </div>
         <h2 class="restaurant-detail__name">${name}</h2>
