@@ -1,47 +1,6 @@
 class CategoryList extends HTMLElement {
-  #shadowRoot = null;
-
-  constructor() {
-    super();
-    this.#shadowRoot = this.attachShadow({ mode: 'open' });
-  }
-
-  render(categories, bgColor = '#888', color = 'black') {
-    this.#shadowRoot.innerHTML = `
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-        }
-
-        .category-list__container {
-          display: flex;
-          flex-flow: row wrap;
-          align-content: flex-start;
-          gap: 4px;
-          padding: 8px 0;
-          margin-bottom: 8px;
-          border-top: 1px solid #FF6701;
-          border-bottom: 1px solid #FF6701;
-        }
-
-        .category-list__item {
-          background-color: ${bgColor};
-          color: ${color};
-          padding: 4px 8px;
-          border-radius: 13.5px 13.5px;
-        }
-
-        .category-list__title {
-          margin: 4px 0;
-
-          color: #FF6701;
-          font-weight: bold;
-        }
-      </style>
-      <p class="category-list__title">Kategori:</p>
-    `;
+  render(categories) {
+    this.innerHTML = '<p class="category-list__title">Kategori:</p>';
 
     const categoryListContainer = document.createElement('div');
     categoryListContainer.setAttribute('class', 'category-list__container');
@@ -51,7 +10,7 @@ class CategoryList extends HTMLElement {
       categoryListContainer.appendChild(category);
     });
 
-    this.#shadowRoot.appendChild(categoryListContainer);
+    this.appendChild(categoryListContainer);
   }
 
   #createCategory(category) {

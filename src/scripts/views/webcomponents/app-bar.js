@@ -1,121 +1,10 @@
 class AppBar extends HTMLElement {
-  #shadowRoot = null;
-
-  constructor() {
-    super();
-    this.#shadowRoot = this.attachShadow({ mode: 'open' });
-  }
-
   connectedCallback() {
     this.#render();
   }
 
   #render() {
-    this.#shadowRoot.innerHTML = `
-      <style>
-        * {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-        }
-
-        .app-bar {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          padding: 8px 16px;
-          background-color: white;
-          box-shadow: 0 4px 8px rgba( 0, 0, 0, .4 );
-        }
-        
-        .app-bar__menu-button {
-          margin-left: auto;
-        }
-        
-        .app-bar__to-main-navigator{
-          position: absolute;
-          top: -100%;
-          left: 0;
-          z-index: 1;
-        }
-        
-        .app-bar__to-main-navigator:focus {
-          position: static;
-          top:0;
-        }
-        
-        .app-bar__menu-button {
-          background-color: #FEA82F;
-          border-radius: 5px;
-          color: white;
-          border: none;
-          min-width: 44px;
-          min-height: 44px;
-          font-size: 1.2em;
-          font-weight: bold;
-        }
-        
-        .app-bar__navigations {
-          display: flex;
-          flex-direction: column;
-          position: fixed;
-          top: 0;
-          right: -100%;
-          z-index: 1;
-          background-color: #FF6701;
-          width: 80%;
-          height: 100%;
-          transition: transform .4s ease-in-out; 
-        }
-
-        .app-bar__navigations > a {
-          color: white;
-          display: block;
-          padding: 16px 24px;
-          min-height: 44px;
-          text-decoration: none;
-        }
-
-        .app-bar__navigations > a:focus, .app-bar__navigations > a:hover {
-          text-decoration: underline;
-          background-color: #FCECDD;
-          color: black;
-          outline:none;
-        }
-        
-        .app-bar__navigations.open {
-          transform: translate( -100%, 0 );
-        }
-
-        /* Normal Desktop Screen */
-        @media only screen and ( min-width: 1000px ) {
-          .app-bar__menu-button {
-            display: none;
-          }
-          .app-bar__navigations {
-            display: flex;
-            flex-direction: row;
-            position: sticky;
-            top:0;
-            z-index: 0;
-            justify-content: flex-end;
-            background-color: white;
-            width: auto;
-            height: auto;
-            margin-left: auto;
-          }
-          .app-bar__navigations > a {
-            border-right: 1px solid #FFC288;
-            color: #FF6701;
-          }
-          .app-bar__navigations > a:last-child {
-            border-right: none;
-          }
-        }
-      </style>
-    `;
-
-    this.#shadowRoot.innerHTML += `
+    this.innerHTML = `
       <div class="app-bar" aria-label="App Bar">
         <a href="#" class="app-bar__to-main-navigator" id="skipLink">Ke Konten Utama</a>
         <a href="#/home"><img src="./images/logo/Suka-Makan-Logo.png" width="124px" alt="Suka Makan"></a>
@@ -128,19 +17,14 @@ class AppBar extends HTMLElement {
       </div>
     `;
 
-    const hamburgerButton = this.#shadowRoot.querySelector('#hamburgerButton');
-    const drawer = this.#shadowRoot.querySelector('#drawer');
+    const hamburgerButton = this.querySelector('#hamburgerButton');
+    const drawer = this.querySelector('#drawer');
     const main = document.querySelector('main');
-    const skipLinkElement = this.#shadowRoot.querySelector('#skipLink');
-
-    console.log(skipLinkElement);
+    const skipLinkElement = this.querySelector('#skipLink');
 
     skipLinkElement.addEventListener('click', (evt) => {
-      console.log('skipLinkElement Event\'s Trigerred');
       evt.preventDefault();
       const appContent = document.querySelector('#appContent');
-      console.log(appContent);
-
       appContent.focus();
     });
 

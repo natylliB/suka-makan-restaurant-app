@@ -10,10 +10,7 @@ import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 class Detail extends Page {
   async render() {
-    return `
-      <div id="pageContent" class="page-content">
-      </div>
-    `;
+    return '<div id="pageContent" class="page-content"></div>';
   }
 
   async afterRender() {
@@ -58,7 +55,7 @@ class Detail extends Page {
     `;
 
     const categoryList = document.querySelector('category-list');
-    categoryList.render(categories, '#FEA82F', 'white');
+    categoryList.render(categories);
 
     const restaurantMenu = document.querySelector('restaurant-menu');
     restaurantMenu.render(menus);

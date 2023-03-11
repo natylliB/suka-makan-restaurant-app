@@ -152,9 +152,473 @@ footer {
   }
 }
 
+/* Loader Screen */
+
 loader-screen {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 1;
+
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.loader-container {
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 3px;
+  padding: 4px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  display: inline-block;
+  margin: -26px -26px 0 0;
+}
+
+.loader {
+  width: 44px;
+  height: 44px;
+  border: 5px solid #f4f4f4;
+  border-top: 5px solid #FF6701;
+  border-right: 5px solid #ff6701;
+  border-radius: 50%;
+
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* search bar */
+.search-bar__form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+}
+
+.search-bar__form-label {
+  color: #FCECDD;
+}
+
+.search-bar__form-input-text {
+  width: 100%;
+  padding: 8px 12px;
+  color: #FEA82F;
+  min-height: 44px;
+  border: none;
+  border-bottom: 4px solid #FF6701;
+  border-radius: 4px 0 0 4px;
+  background-color: #FCECDD;
+}
+
+.search-bar__form-input-text:focus {
+  outline: none;
+  color: white;
+  background-color: #FFC288;
+}
+
+.search-bar__form-search {
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar__form-button {
+  border: none;
+  border-radius: 0 3px 3px 0;
+  background-color: #FF6701;
+  min-width: 44px;
+  min-height: 44px;
+  margin:auto;
+}
+
+.search-bar__form-button:focus {
+  outline: none;
+  background-color: #FCECDD;
+}
+
+.search-bar__form-button:focus > img {
+  filter: brightness(0) saturate(100%) invert(41%) sepia(94%) saturate(1798%) hue-rotate(359deg) brightness(101%) contrast(105%);
+}
+
+/* restaurant collection */
+.restaurant-collection__title {
+  color: #FF6701;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.restaurant-collection__title::after {
+  content: "";
+  border-bottom: 1px solid #FF6701;
+  display: block;
+  margin-top: 16px;
+}
+
+.restaurant-collection__error {
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  height: 150px;
+  padding: 16px;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.restaurant-collection__error-icon {
+  width: 44px;
+  height: 44px;
+
+  filter: invert(59%) sepia(0%) saturate(0%) hue-rotate(230deg) brightness(90%) contrast(98%);
+}
+
+.restaurant-collection__error > div {
+  color: gray;
+  width: 60%;
+}
+
+.restaurant-collection__error-title {
+  font-weight: bold;
+  text-align: justify;
+}
+
+.restaurant-collection__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: auto;
+  width: 100%;
+  padding: 16px;
+  gap: 16px;
+}
+
+
+/* restaurant item */
+.restaurant-item__container {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 10px 0 rgba( 0, 0, 0, .4 );
+  border-radius: 5px;
+}
+
+.restaurant-item__text {
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.restaurant-item__text-name {
+  color: #FF6701;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.restaurant-item__text-description {
+  line-height: 1.5em;
+}
+
+.restaurant-item__kv{
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.restaurant-item__kv-thumbnail {
+  width:100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.restaurant-item__kv-city-container {
+  position: absolute;
+  top: 0;
+  background-image: linear-gradient(to right, #FF6701, #FF6701cc , transparent);
+  @include variables.flexdisplay(row);
+  gap: 4px;
+  padding: 8px;
+  padding-right: 36px;
+  border-top-left-radius: 5px;
+  align-items: center;
+}
+
+.restaurant-item__kv-city-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.restaurant-item__kv-city-text {
+  color: white;
+}
+
+/* app bar */
+.app-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba( 0, 0, 0, .4 );
+}
+
+.app-bar__menu-button {
+  margin-left: auto;
+}
+
+.app-bar__to-main-navigator{
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 1;
+}
+
+.app-bar__to-main-navigator:focus {
+  position: static;
+  top:0;
+}
+
+.app-bar__menu-button {
+  background-color: #FEA82F;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.app-bar__navigations {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 1;
+  background-color: #FF6701;
+  width: 80%;
+  height: 100%;
+  transition: transform .4s ease-in-out; 
+}
+
+.app-bar__navigations > a {
+  color: white;
+  display: block;
+  padding: 16px 24px;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.app-bar__navigations > a:focus, .app-bar__navigations > a:hover {
+  text-decoration: underline;
+  background-color: #FCECDD;
+  color: black;
+  outline:none;
+}
+
+.app-bar__navigations.open {
+  transform: translate( -100%, 0 );
+}
+
+/* category list */
+.category-list__container {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  gap: 4px;
+  padding: 8px 0;
+  margin-bottom: 8px;
+  border-top: 1px solid #FF6701;
+  border-bottom: 1px solid #FF6701;
+}
+
+.category-list__item {
+  background-color: #FEA82F;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 13.5px 13.5px;
+}
+
+.category-list__title {
+  margin: 4px 0;
+
+  color: #FF6701;
+  font-weight: bold;
+}
+
+
+/* favorite button */
+.favorite-button {
+  background-color: #FF6701;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.favorite-button__icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(99%) sepia(100%) saturate(0%) hue-rotate(212deg) brightness(109%) contrast(101%)
+}
+
+/* restaurant menu */
+.restaurant-menu {
+  margin: 16px;
+}
+
+.consumables-title {
+  color: #FF6701;
+  font-weight: bold;
+}
+
+.consumables-container {
+  gap: 8px;
+  display: flex;
+  padding: 8px 0;
+  flex-flow: row wrap;
+
+  border-top: 1px solid #FF6701;
+}
+
+.consumable-item {
+  padding: 16px;
+
+  box-shadow: 0 2px 4px 0 rgba( 0, 0, 0, .4 );
+  border-radius: 4px;
+}
+
+/* restaurant review */
+.review-title {
+  color: #FF6701;
+  font-weight: bold;
+  margin: 8px 16px;
+  border-bottom: 1px solid #FF6701;
+}
+.review-collection {
+  width: 100%;
+}
+
+/* review collection */
+.review-container {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 16px;
+  gap: 8px;
+}
+.review-item {
+  box-shadow: 0 2px 4px 0 rgba( 0, 0, 0, .4 );
+  padding: 16px;
+}
+.review-item__customer-name {
+  font-weight: bold;
+}
+.review-item__date {
+  color: #888;
+  margin: 8px 0 16px;
+  font-size: .8em;
+}
+
+/* add review */
+.add-review__title {
+  color: #FF6701;
+  font-weight: bold;
+  margin: 16px;
+  border-bottom: 1px solid #FF6701;
+}
+.add-review__form {
+  margin: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: 1px solid #FF6701;
+}
+
+.add-review__form-customer-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.add-review__form-customer-name > .add-review__form-label {
+  flex-basis: 20%;
+}
+
+.add-review__form-customer-name > .add-review__form-input {
+  flex-basis: 80%;
+}
+
+.add-review__form-label {
+  color: #FF6701;
+}
+
+.add-review__form-customer-review {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.add-review__form-input {
+  padding: 8px 12px;
+  color: #FEA82F;
+  border: none;
+  border-bottom: 4px solid #FF6701;
+  background-color: #FCECDD;
+  border-radius: 4px;
+}
+
+.add-review__form-input:focus {
+  outline: none;
+  color: white;
+  font-family: Georgia, serif;
+  background-color: #FFC288;
+}
+
+.add-review__form-btn-post {
+  background-color: #FEA82F;
+  color: white;
+  font-weight: bold;
+  min-height: 44px;
+  border-radius: 4px;
+  border: none;
+}
+
+.add-review__form-btn-post:focus {
+  outline: none;
+  border: 2px solid #FF6701;
+  background-color: #FCECDD;
+  color: #FF6701;
 }

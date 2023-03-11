@@ -1,6 +1,4 @@
 class FavoriteButton extends HTMLElement {
-  #shadowRoot = null;
-
   #restaurantId = null;
 
   #favoriteRestaurant = null;
@@ -8,11 +6,6 @@ class FavoriteButton extends HTMLElement {
   #favoriteCallback = null;
 
   #unfavoriteCallback = null;
-
-  constructor() {
-    super();
-    this.#shadowRoot = this.attachShadow({ mode: 'open' });
-  }
 
   async initialize({
     restaurantId,
@@ -28,7 +21,7 @@ class FavoriteButton extends HTMLElement {
   }
 
   async #render() {
-    this.#shadowRoot.innerHTML = this.#getStyleAndBaseTemplate();
+    this.innerHTML = '<div class="favorite-button-container"></div>';
     await this.#renderButton();
   }
 
@@ -46,10 +39,10 @@ class FavoriteButton extends HTMLElement {
   }
 
   #renderFavoriteButton() {
-    const favoriteButtonContainer = this.#shadowRoot.querySelector('.favorite-button-container');
+    const favoriteButtonContainer = this.querySelector('.favorite-button-container');
     favoriteButtonContainer.innerHTML = this.#getFavoriteButtonTemplate();
 
-    const btnLike = this.#shadowRoot.querySelector('#btnLike');
+    const btnLike = this.querySelector('#btnLike');
 
     btnLike.addEventListener('click', async () => {
       await this.#favoriteCallback();
@@ -58,46 +51,14 @@ class FavoriteButton extends HTMLElement {
   }
 
   #renderUnfavoriteButton() {
-    const favoriteButtonContainer = this.#shadowRoot.querySelector('.favorite-button-container');
+    const favoriteButtonContainer = this.querySelector('.favorite-button-container');
     favoriteButtonContainer.innerHTML = this.#getUnfavoriteButtonTemplate();
 
-    const btnLiked = this.#shadowRoot.querySelector('#btnLiked');
+    const btnLiked = this.querySelector('#btnLiked');
     btnLiked.addEventListener('click', async () => {
       await this.#unfavoriteCallback();
       this.#renderButton();
     });
-  }
-
-  #getStyleAndBaseTemplate() {
-    return `
-      <style>
-        * {
-          padding: 0;
-          margin: 0;
-          box-sizing: border-box;
-        }
-        .favorite-button {
-          background-color: #FF6701;
-          min-width: 44px;
-          min-height: 44px;
-          padding: 10px;
-  
-          display: flex;
-          justify-content: center;
-          align-item: center;
-          
-          border-radius: 50%;
-          border: none;
-          cursor: pointer;
-        }
-        .favorite-button__icon {
-          width: 24px;
-          height: 24px;
-          filter: invert(99%) sepia(100%) saturate(0%) hue-rotate(212deg) brightness(109%) contrast(101%)
-        }
-      </style>
-      <div class="favorite-button-container"></div>
-    `;
   }
 
   #getUnfavoriteButtonTemplate() {
