@@ -6,6 +6,7 @@ import '../webcomponents/restaurant-menu';
 import '../webcomponents/restaurant-review';
 import '../webcomponents/favorite-button';
 import Page from './page';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 class Detail extends Page {
   async render() {
@@ -66,13 +67,22 @@ class Detail extends Page {
     restaurantReview.render(customerReviews);
 
     const favoriteButton = document.querySelector('favorite-button');
-    await favoriteButton.intialize({
-      id,
-      name,
-      city,
-      pictureId,
-      rating,
-      description,
+    await favoriteButton.initialize({
+      restaurantId: id,
+      favoriteRestaurant: FavoriteRestaurantIdb,
+      favoriteCallback: async () => {
+        FavoriteRestaurantIdb.putRestaurant({
+          id,
+          name,
+          city,
+          pictureId,
+          rating,
+          description,
+        });
+      },
+      unfavoriteCallback: async () => {
+        FavoriteRestaurantIdb.deleteRestaurant(id);
+      },
     });
   }
 }
