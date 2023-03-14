@@ -5,7 +5,7 @@ import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 import { addFavoriteButtonTiedWithRestaurant as addFavoriteButton } from './helper/testFactories';
 
 describe('Unliking a restaurant', () => {
-  const getFavoriteButton = (querySelector) => document.querySelector('favorite-button').shadowRoot.querySelector(querySelector);
+  const getFavoriteButton = (querySelector) => document.querySelector('favorite-button').querySelector(querySelector);
 
   beforeEach(async () => {
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
@@ -25,7 +25,7 @@ describe('Unliking a restaurant', () => {
   });
 
   it('should be able to remove liked restaurant from the list', async () => {
-    getFavoriteButton('#btnLiked').dispatchEvent(new Event('click'));
+    getFavoriteButton('#btnUnfavorite').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
@@ -33,7 +33,7 @@ describe('Unliking a restaurant', () => {
   it('should not throw error if the unliked movie is not in the list', async () => {
     await FavoriteRestaurantIdb.deleteRestaurant(1);
 
-    getFavoriteButton('#btnLiked').dispatchEvent(new Event('click'));
+    getFavoriteButton('#btnUnfavorite').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });

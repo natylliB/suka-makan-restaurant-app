@@ -3,7 +3,8 @@ import 'regenerator-runtime';
 
 const assetsToPrecache = [
   './',
-  './images/hero/hero-image.jpg',
+  './images/hero/hero-image-default.jpg',
+  './images/hero/hero-image-small.jpg',
   './images/icons/baseline_location_on_white_24dp.png',
   './images/icons/outline_error_outline_black_48dp.png',
   './images/icons/twotone_search_white_24dp.png',

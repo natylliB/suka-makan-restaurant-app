@@ -15,7 +15,7 @@ class SearchBar extends HTMLElement {
         <label class="search-bar__form-label" for="restaurantSearch">Telusuri Restoran</label>
         <div class="search-bar__form-search">
           <input class="search-bar__form-input-text" type="search" id="inputSearch" placeholder="Masukan Nama Restoran">
-          <button class="search-bar__form-button" id="buttonBrowse" aria-label="search"><img src="../../../images/icons/twotone_search_white_24dp.png"></button>
+          <button class="search-bar__form-button" id="buttonBrowse" aria-label="search"><img src="../../../images/icons/twotone_search_white_24dp.png" width="24px" height="24px" alt="search"></button>
         </div>
       </form>
     `;

@@ -28,6 +28,7 @@
 /* normal desktop screen */
 @media only screen and ( min-width: 1000px ) {
   .hero {
+    background-image: url("../public/images/hero/hero-image-default.jpg");
     > .hero__inner {
       > .hero__inner-title {
         font-size: variables.$heading1;

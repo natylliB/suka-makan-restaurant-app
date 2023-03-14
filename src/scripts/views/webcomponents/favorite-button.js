@@ -42,7 +42,7 @@ class FavoriteButton extends HTMLElement {
     const favoriteButtonContainer = this.querySelector('.favorite-button-container');
     favoriteButtonContainer.innerHTML = this.#getFavoriteButtonTemplate();
 
-    const btnLike = this.querySelector('#btnLike');
+    const btnLike = this.querySelector('#btnFavorite');
 
     btnLike.addEventListener('click', async () => {
       await this.#favoriteCallback();
@@ -54,7 +54,7 @@ class FavoriteButton extends HTMLElement {
     const favoriteButtonContainer = this.querySelector('.favorite-button-container');
     favoriteButtonContainer.innerHTML = this.#getUnfavoriteButtonTemplate();
 
-    const btnLiked = this.querySelector('#btnLiked');
+    const btnLiked = this.querySelector('#btnUnfavorite');
     btnLiked.addEventListener('click', async () => {
       await this.#unfavoriteCallback();
       this.#renderButton();
@@ -63,7 +63,7 @@ class FavoriteButton extends HTMLElement {
 
   #getUnfavoriteButtonTemplate() {
     return `
-      <button class="favorite-button" aria-label="unfavorite" id="btnLiked">
+      <button class="favorite-button" aria-label="unfavorite" id="btnUnfavorite">
         <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_black_24dp.png">
         </button>
     `;
@@ -71,7 +71,7 @@ class FavoriteButton extends HTMLElement {
 
   #getFavoriteButtonTemplate() {
     return `
-      <button class="favorite-button" aria-label="favorite" id="btnLike">
+      <button class="favorite-button" aria-label="favorite" id="btnFavorite">
         <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_border_black_24dp.png">
       </button>
     `;

@@ -4,7 +4,7 @@ import { addFavoriteButtonTiedWithRestaurant as addFavoriteButton } from './help
 import FavoriteRestaurantIdb from '../src/scripts/data/favorite-restaurant-idb';
 
 describe('Liking a restaurant', () => {
-  const getFavoriteButton = (querySelector) => document.querySelector('favorite-button').shadowRoot.querySelector(querySelector);
+  const getFavoriteButton = (querySelector) => document.querySelector('favorite-button').querySelector(querySelector);
 
   it('should show favorite button when the restaurant has not been favorite before', async () => {
     await addFavoriteButton(1);
@@ -19,7 +19,7 @@ describe('Liking a restaurant', () => {
   it('should be able to favorite a restaurant', async () => {
     await addFavoriteButton(1);
 
-    getFavoriteButton('#btnLike').dispatchEvent(new Event('click'));
+    getFavoriteButton('#btnFavorite').dispatchEvent(new Event('click'));
 
     const favoriteRestaurant = await FavoriteRestaurantIdb.getRestaurant(1);
 
@@ -33,7 +33,7 @@ describe('Liking a restaurant', () => {
 
     await FavoriteRestaurantIdb.putRestaurant({ id: 1 });
 
-    getFavoriteButton('#btnLike').dispatchEvent(new Event('click'));
+    getFavoriteButton('#btnFavorite').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
     await FavoriteRestaurantIdb.deleteRestaurant(1);
@@ -42,7 +42,7 @@ describe('Liking a restaurant', () => {
   it('should not add a restaurant when it has no id', async () => {
     await addFavoriteButton();
 
-    getFavoriteButton('#btnLike').dispatchEvent(new Event('click'));
+    getFavoriteButton('#btnFavorite').dispatchEvent(new Event('click'));
 
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([]);
   });
