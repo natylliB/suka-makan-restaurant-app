@@ -64,7 +64,7 @@ class FavoriteButton extends HTMLElement {
   #getUnfavoriteButtonTemplate() {
     return `
       <button class="favorite-button" aria-label="unfavorite" id="btnUnfavorite">
-        <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_black_24dp.png">
+        <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_black_24dp.png" alt="unfavorite">
         </button>
     `;
   }
@@ -72,7 +72,7 @@ class FavoriteButton extends HTMLElement {
   #getFavoriteButtonTemplate() {
     return `
       <button class="favorite-button" aria-label="favorite" id="btnFavorite">
-        <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_border_black_24dp.png">
+        <img class="favorite-button__icon" src="../../../images/icons/sharp_favorite_border_black_24dp.png" alt="favorite">
       </button>
     `;
   }
