@@ -74,7 +74,7 @@ module.exports = {
         },
       ],
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
