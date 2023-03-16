@@ -35,13 +35,13 @@ class CacheHelper {
       return response;
     }
 
-    await this.#addCache(request);
+    await this.#addCache(request, response.clone());
     return response;
   }
 
-  static async #addCache(request) {
+  static async #addCache(request, response) {
     const cache = await this.#openCache();
-    cache.add(request);
+    await cache.put(request, response);
   }
 
   static async #openCache() {

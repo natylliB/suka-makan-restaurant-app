@@ -17,7 +17,7 @@ const main = () => {
   });
 };
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   main();
-  swRegister();
+  await swRegister();
 });
