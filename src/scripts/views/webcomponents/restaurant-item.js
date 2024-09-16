@@ -30,7 +30,7 @@ class RestaurantItem extends HTMLElement {
     this.innerHTML += `
       <div class="restaurant-item__container" aria-label="Restoran: ${name}" tab-index="0">
         <div class="restaurant-item__kv">
-          <img class="restaurant-item__kv-thumbnail lazyload" alt="Restoran: ${name}" src="${RestaurantAPI.getImageSrc(pictureId, 'small')}">
+          <img class="restaurant-item__kv-thumbnail lazyload" alt="Restoran: ${name}" data-src="${RestaurantAPI.getImageSrc(pictureId, 'small')}">
           <div class="restaurant-item__kv-city-container">
             <img src="${'../../../images/icons/baseline_location_on_white_24dp.png'}" class="restaurant-item__kv-city-icon" alt="Kota">
             <span class="restaurant-item__kv-city-text">${city}</span>

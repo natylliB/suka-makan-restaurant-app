@@ -14,14 +14,14 @@ fs.readdirSync(target)
     sharp(`${target}/${image}`)
       .resize(1000)
       .toFile(path.resolve(
-        __dirname, 
-        `${destination}/${image.split('.').slice(0, -1).join('')}-default.jpg`
+        __dirname,
+        `${destination}/${image.split('.').slice(0, -1).join('')}-default.jpg`,
       ));
 
     sharp(`${target}/${image}`)
       .resize(480)
       .toFile(path.resolve(
-        __dirname, 
-        `${destination}/${image.split('.').slice(0, -1).join('')}-small.jpg`
+        __dirname,
+        `${destination}/${image.split('.').slice(0, -1).join('')}-small.jpg`,
       ));
   });

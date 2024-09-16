@@ -333,8 +333,9 @@ loader-screen {
 
 .restaurant-item__text-name {
   color: #FF6701;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: bold;
+  padding: 10px 0;
 }
 
 .restaurant-item__text-description {
@@ -579,6 +580,7 @@ loader-screen {
 
 .add-review__form-customer-name > .add-review__form-input {
   flex-basis: 80%;
+  min-height: 44px;
 }
 
 .add-review__form-label {
